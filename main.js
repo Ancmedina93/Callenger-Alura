@@ -28,7 +28,7 @@ Buen proyecto!
 //Definicion de variables de entrada
 const botonEncriptar = document.querySelector('#botonEncriptar');
 const botonDesencriptar = document.querySelector('#botonDesencriptar');
-
+const botonLimpiar = document.querySelector('#botonLimpiar')
 
 function Encriptar() {
     var textoEntrada = document.getElementById('textoentrada').value;
@@ -73,5 +73,60 @@ function Encriptar() {
     
 }
 
+function Desencriptar() {
+    var textoEntrada = document.getElementById('textoentrada').value;
+    var textodesencriptado = "";
+
+    for (var posicion = 0; posicion < textoEntrada.length ; posicion++) {	
+
+        if (textoEntrada[posicion] == 'a'){
+            textodesencriptado = textodesencriptado + "a";
+            posicion = posicion + 1
+        }
+        else if(textoEntrada[posicion] == 'e') {
+            textodesencriptado = textodesencriptado + "e";
+            posicion = posicion + 4
+        }
+        else if(textoEntrada[posicion] == 'i') {
+            textodesencriptado = textodesencriptado + "i";
+            posicion = posicion + 3
+        }
+        else if(textoEntrada[posicion] == 'o') {
+            textodesencriptado = textodesencriptado + "o";
+            posicion = posicion + 3
+        }
+        else if(textoEntrada[posicion] == 'u') {
+            textodesencriptado = textodesencriptado + "u";
+            posicion = posicion + 3
+        } 
+        else {
+            textodesencriptado = textodesencriptado + textoEntrada[posicion];
+        } 
+    }
+
+    document.getElementById('resultados').innerHTML = "<textarea id=\"textoEncriptadoJS\" value=\" "+textodesencriptado+"\">"+textodesencriptado+"</textarea><button id=\"botonCopiar\">Copiar texto</button>";
+
+    var botonCopiar = document.querySelector('#botonCopiar');
+
+       
+        function TextoCopiado()
+        {
+            
+            //navigator.clipboard.writeText(textoEncriptado);
+            var contenido = document.querySelector('#textoEncriptadoJS');
+            contenido.select();
+            document.execCommand("copy");
+        }
+
+        botonCopiar.onclick = TextoCopiado;
+
+}
+
+function Limpiar(){
+    document.getElementById("textoentrada").value = "";
+    document.getElementById("textoEncriptadoJS").value = "";
+}
 
 botonEncriptar.onclick = Encriptar;
+botonDesencriptar.onclick = Desencriptar;
+botonLimpiar.onclick = Limpiar

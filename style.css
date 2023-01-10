@@ -72,12 +72,12 @@ textarea::placeholder{
 }
 
 
-#botonEncriptar, #botonDesencriptar {
-    width: 40%;
+#botonEncriptar, #botonDesencriptar, #botonLimpiar {
+    width: 25%;
     height: 55px;
     background: #0A3871;
     border-radius: 24px;
-    margin: 0 5% 0 5%;
+    margin: 0 2.5% 0 2.5%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
