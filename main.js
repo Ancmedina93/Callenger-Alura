@@ -25,5 +25,53 @@ El Trello es una herramienta de uso individual para que puedas controlar el prog
 Buen proyecto!
 */
 
+//Definicion de variables de entrada
+const botonEncriptar = document.querySelector('#botonEncriptar');
+const botonDesencriptar = document.querySelector('#botonDesencriptar');
 
 
+function Encriptar() {
+    var textoEntrada = document.getElementById('textoentrada').value;
+    var textoencriptado = "";
+
+    for (var posicion = 0; posicion < textoEntrada.length ; posicion++) {		
+        if (textoEntrada[posicion] == 'a'){
+            textoencriptado = textoencriptado + "ai";
+        }
+        else if(textoEntrada[posicion] == 'e') {
+            textoencriptado = textoencriptado + "enter";
+        }
+        else if(textoEntrada[posicion] == 'i') {
+            textoencriptado = textoencriptado + "imes";
+        }
+        else if(textoEntrada[posicion] == 'o') {
+            textoencriptado = textoencriptado + "ober";
+        }
+        else if(textoEntrada[posicion] == 'u') {
+            textoencriptado = textoencriptado + "ufat";
+        } 
+        else {
+            textoencriptado = textoencriptado + textoEntrada[posicion];
+        } 
+    }
+
+    document.getElementById('resultados').innerHTML = "<textarea id=\"textoEncriptadoJS\" value=\" "+textoencriptado+"\">"+textoencriptado+"</textarea><button id=\"botonCopiar\">Copiar texto</button>";
+
+    var botonCopiar = document.querySelector('#botonCopiar');
+
+       
+        function TextoCopiado()
+        {
+            
+            //navigator.clipboard.writeText(textoEncriptado);
+            var contenido = document.querySelector('#textoEncriptadoJS');
+            contenido.select();
+            document.execCommand("copy");
+        }
+
+        botonCopiar.onclick = TextoCopiado;
+    
+}
+
+
+botonEncriptar.onclick = Encriptar;
